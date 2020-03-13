@@ -96,6 +96,10 @@ def stakeholders():
     print("\nLastly, let's put you on the list because you are involved. You are also a stakeholder")
     addSH(shFile, shNumber, "You")
 
+    #done
+    print("\nWe are done with step 2 and step 3!")
+    shFile.close()
+
 def addSH(shFile, shNumber, name):
     shFile.write("%d. %s\n" %(shNumber, name))
     print("Everyone has personal, position-related, financial, or political motivations. Think of the motivation of %s. You can put N/A if it's irrelevant or if you can't think of any" %name)

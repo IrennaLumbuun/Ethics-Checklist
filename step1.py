@@ -30,7 +30,7 @@ def assembleFact():
     #brainstorm problematic scenarios
     print("\nGreat! Let's think of some possible problematic scenarios if the problem remains unsolved")
     optScenario = input("1 - add a scenario\n2 - go to the next step\nEnter your input: ")
-    factFile.write("\nProblematic Scenatios if problem is not solved:\n")
+    factFile.write("\nProblematic Scenarios if problem is not solved:\n")
     scenNumber = 1
     while(optScenario != "2"):
         if(optScenario == "1"):
@@ -53,6 +53,7 @@ def assembleFact():
     print("\nWe're done with step 1. Continueing with step 2...")
     #close file
     factFile.close()
+    return problem
 
 #these function is called by assembleFact. It writes input to factFile
 def addFact(factFile, factNumber):

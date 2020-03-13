@@ -7,6 +7,7 @@
 import os
 from step1 import assembleFact
 from step2and3 import stakeholders
+from step4 import developSolutions
 
 #this method greets user and and ask if they want to create a new checklist orupdate pre-existing one
 #it verifies that users input the right value, and then return the input
@@ -26,13 +27,16 @@ def greeting():
             os.chdir(path)
             print("success creating folder")
 
-            #part 1: Fact Assembly
-            assembleFact()
+            #step 1: Fact Assembly
+            problem = assembleFact()
 
-            #part 2: Define Stakeholders
+            #step 2 and 3: Define Stakeholders
             stakeholders()
 
-        #user chooses to update their preexisting checklist. Do part 5 - 10
+            #step 4: develop Solutions
+            solArray = developSolutions(problem)
+
+        #user chooses to update their preexisting checklist. Do part 6 - 8
         elif(userInput == "2"):
             validInput = True
             print("input is 2")
