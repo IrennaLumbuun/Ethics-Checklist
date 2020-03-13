@@ -13,6 +13,7 @@ def stakeholders():
     shFile = open("stakeholders", 'w')
     shFile.write("\nStakeholders:\n")
     shNumber = 1
+    shArr = []
 
     #customers
     print("Does the problem have the possibility to affect customers?")
@@ -28,9 +29,11 @@ def stakeholders():
         if(customer == "1"):
             name =  input("Name of the group: ")
             addSH(shFile, shNumber, name)
+            shArr.append(name)
             shNumber += 1
         else:
             addSH(shFile, shNumber, "customer")
+            shArr.append("customer")
             shNumber += 1
     
     #people at the company
@@ -40,6 +43,7 @@ def stakeholders():
         if(stakeholder == "1"):
             name = input("Name of stakeholder: ")
             addSH(shFile, shNumber, name)
+            shArr.append(name)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -52,6 +56,7 @@ def stakeholders():
         if(stakeholder == "1"):
             name = input("Name: ")
             addSH(shFile, shNumber, name)
+            shArr.append(name)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -64,6 +69,7 @@ def stakeholders():
         if(stakeholder == "1"):
             name = input("Name of the person: ")
             addSH(shFile, shNumber, name)
+            shArr.append(name)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -76,6 +82,7 @@ def stakeholders():
         if(stakeholder == "1"):
             name = input("Name of the entity: ")
             addSH(shFile, shNumber, name)
+            shArr.append(name)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -88,6 +95,7 @@ def stakeholders():
         if(stakeholder == "1"):
             name = input("Name of stakeholder: ")
             addSH(shFile, shNumber, name)
+            shArr.append(name)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -96,10 +104,12 @@ def stakeholders():
     #yourself
     print("\nLastly, let's put you on the list because you are involved. You are also a stakeholder")
     addSH(shFile, shNumber, "You")
+    shArr.append("You")
 
     #done
     print("\nWe are done with step 2 and step 3!")
     shFile.close()
+    return shArr
 
 #this method guides users to figure out stakeholder's motivation and then write them down to the file
 def addSH(shFile, shNumber, name):

@@ -31,7 +31,8 @@ def greeting():
             problem = assembleFact()
 
             #step 2 and 3: Define Stakeholders
-            stakeholders()
+            shArr = stakeholders()
+            print(shArr) #for debugging purpose. Can delete after
 
             #step 4: develop Solutions
             solArray = developSolutions(problem)
