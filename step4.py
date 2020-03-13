@@ -12,8 +12,12 @@ def developSolutions(problem):
     solArray = getSolution(solFile)
     if(len(solArray) > 5): #TODO: compare length of array returned by getSolution
         solArray = analyseSolution(solFile, solArray)
+
+    solFile.close()
+    print("\nYou are done with step 4.\n")
     return solArray
 
+#this methods prompt user to come up with as many solutions as they can
 def getSolution(solFile):
     solutionOpt = input("1 - add solution\n2 - next step\nEnter your input: ")
     solNum = 1
@@ -29,6 +33,7 @@ def getSolution(solFile):
         solutionOpt = input("1 - add solution\n2 - next step\nEnter your input: ")
     return solArray
 
+#this method guides user to narrow down their potential solutions to 5
 def analyseSolution(solFile, solArray):
     solNum = len(solArray)
     print("\nYou have come up with %d potential solutions. Let's narrow it down to 5\n" %solNum)
@@ -36,7 +41,7 @@ def analyseSolution(solFile, solArray):
     solFile.write("\nYou chose to eliminate these solutions:\n")
     while(len(solArray) > 5):
         print("Your potential solutions are:")
-        for i in range(0,solNum):
+        for i in range(0,len(solArray)):
             print("%d - %s" %(i+ 1, solArray[i]))
         eliminate = input("Enter the index of the potential solution that you want to elimniate: ")
         while(int(eliminate) < 1 or int(eliminate) > solNum):
@@ -48,4 +53,9 @@ def analyseSolution(solFile, solArray):
 
         reason = input("Why do you choose to eliminate that potential solution?\nEnter your answer: ")
         solFile.write("Reason: %s\n"%reason)
+    
+    #write remaining solutions
+    solFile.write("\nRemaining solutions: \n")
+    for i in range(0, len(solArray)):
+        solFile.write("%d. %s\n" %(i+1, solArray[i]))
     return solArray

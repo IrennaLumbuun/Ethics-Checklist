@@ -35,6 +35,8 @@ def greeting():
 
             #step 4: develop Solutions
             solArray = developSolutions(problem)
+            print("remaining solutions: ")
+            print(solArray)
 
         #user chooses to update their preexisting checklist. Do part 6 - 8
         elif(userInput == "2"):

@@ -4,6 +4,7 @@
 
 import os
 
+#this method guides user to figure out who are the stakeholders and call addSH
 def stakeholders():
     print("-----------------------------------------------------------------")
     print("Let's define stakeholders; anyone who might be affected by your action.")
@@ -100,6 +101,7 @@ def stakeholders():
     print("\nWe are done with step 2 and step 3!")
     shFile.close()
 
+#this method guides users to figure out stakeholder's motivation and then write them down to the file
 def addSH(shFile, shNumber, name):
     shFile.write("%d. %s\n" %(shNumber, name))
     print("Everyone has personal, position-related, financial, or political motivations. Think of the motivation of %s. You can put N/A if it's irrelevant or if you can't think of any" %name)
@@ -118,7 +120,16 @@ def addSH(shFile, shNumber, name):
     3 - financial motivation
     4 - political motivation
     Enter your input: """)
-    while(int(mostReasonable)< 1 or int(mostReasonable) > 4):
+    try:
+        while(int(mostReasonable)< 1 or int(mostReasonable) > 4):
+            print("Invalid input. You inputed '%s'" %(mostReasonable))
+            mostReasonable = input("""Out of the four motivations, pick one that you think is the most reasonable potential motvations?
+            1 - personal motivation
+            2 - position related motivation
+            3 - financial motivation
+            4 - political motivation
+            Enter your input: """)
+    except ValueError:
         print("Invalid input. You inputed '%s'" %(mostReasonable))
         mostReasonable = input("""Out of the four motivations, pick one that you think is the most reasonable potential motvations?
         1 - personal motivation
@@ -126,6 +137,7 @@ def addSH(shFile, shNumber, name):
         3 - financial motivation
         4 - political motivation
         Enter your input: """)
+
     
     shFile.write("personal motivation: %s\nPosition related motivation: %s\nFinancial motivation: %s\nPolitical motivation: %s" %(pMotiv, posMotiv, finMotiv, polMotiv))
     shFile.write("\nMost Reasonable: %s\n" %motivArr[int(mostReasonable) - 1])
