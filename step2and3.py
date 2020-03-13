@@ -13,7 +13,7 @@ def stakeholders():
     shFile = open("stakeholders", 'w')
     shFile.write("\nStakeholders:\n")
     shNumber = 1
-    shArr = []
+    shDict = {}
 
     #customers
     print("Does the problem have the possibility to affect customers?")
@@ -28,12 +28,10 @@ def stakeholders():
             customer = input("1 - yes\n2 - no\nEnter your input: ")
         if(customer == "1"):
             name =  input("Name of the group: ")
-            addSH(shFile, shNumber, name)
-            shArr.append(name)
+            addSH(shFile, shNumber, name, shDict)
             shNumber += 1
         else:
-            addSH(shFile, shNumber, "customer")
-            shArr.append("customer")
+            addSH(shFile, shNumber, "customer", shDict)
             shNumber += 1
     
     #people at the company
@@ -42,8 +40,7 @@ def stakeholders():
     while(stakeholder != "2"):
         if(stakeholder == "1"):
             name = input("Name of stakeholder: ")
-            addSH(shFile, shNumber, name)
-            shArr.append(name)
+            addSH(shFile, shNumber, name, shDict)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -55,8 +52,7 @@ def stakeholders():
     while(stakeholder != "2"):
         if(stakeholder == "1"):
             name = input("Name: ")
-            addSH(shFile, shNumber, name)
-            shArr.append(name)
+            addSH(shFile, shNumber, name, shDict)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -68,8 +64,7 @@ def stakeholders():
     while(stakeholder != "2"):
         if(stakeholder == "1"):
             name = input("Name of the person: ")
-            addSH(shFile, shNumber, name)
-            shArr.append(name)
+            addSH(shFile, shNumber, name, shDict)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -81,8 +76,7 @@ def stakeholders():
     while(stakeholder != "2"):
         if(stakeholder == "1"):
             name = input("Name of the entity: ")
-            addSH(shFile, shNumber, name)
-            shArr.append(name)
+            addSH(shFile, shNumber, name, shDict)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -94,8 +88,7 @@ def stakeholders():
     while(stakeholder != "2"):
         if(stakeholder == "1"):
             name = input("Name of stakeholder: ")
-            addSH(shFile, shNumber, name)
-            shArr.append(name)
+            addSH(shFile, shNumber, name, shDict)
             shNumber += 1
         else:
             print("Invalid input. You input: %s" %stakeholder)
@@ -103,16 +96,15 @@ def stakeholders():
     
     #yourself
     print("\nLastly, let's put you on the list because you are involved. You are also a stakeholder")
-    addSH(shFile, shNumber, "You")
-    shArr.append("You")
+    addSH(shFile, shNumber, "You", shDict)
 
     #done
     print("\nWe are done with step 2 and step 3!")
     shFile.close()
-    return shArr
+    return shDict
 
 #this method guides users to figure out stakeholder's motivation and then write them down to the file
-def addSH(shFile, shNumber, name):
+def addSH(shFile, shNumber, name, shDict):
     shFile.write("%d. %s\n" %(shNumber, name))
     print("Everyone has personal, position-related, financial, or political motivations. Think of the motivation of %s. You can put N/A if it's irrelevant or if you can't think of any" %name)
     pMotiv = input("\nWhat is this stakeholder's personal motivation?\n")
@@ -151,4 +143,5 @@ def addSH(shFile, shNumber, name):
     
     shFile.write("personal motivation: %s\nPosition related motivation: %s\nFinancial motivation: %s\nPolitical motivation: %s" %(pMotiv, posMotiv, finMotiv, polMotiv))
     shFile.write("\nMost Reasonable: %s\n" %motivArr[int(mostReasonable) - 1])
-
+    shDict[name] =  motivArr[int(mostReasonable) - 1]
+    return shDict
