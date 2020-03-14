@@ -1,6 +1,6 @@
 import os
 
-evalSolutions(solArr, shDict):
+def evalSolutions(solArr, shDict):
     print("------------------------------------------------------------------------")
     print("For each solution from the set of 5 solutions we have left, let's assign weights and benefits to the stakeholders.")
     print("- For the stakeholder weights, assign each stakeholder a weight from 1-9. Remember, these weights are relative to other stakeholders, so take the unbiased approach when assessing each stakeholder")
@@ -18,7 +18,7 @@ evalSolutions(solArr, shDict):
 
     # for each solution, assign weights and benefits to each stakeholder
     for solNum in range(len(solArr)):
-        print("For the solution \"%s\", assign weights and benefits to each stakeholder." %solArr[solNum])
+        print("\nFor the solution \"%s\", assign weights and benefits to each stakeholder." %solArr[solNum])
         evalFile.write("Solution \"%s\":\n" %solArr[solNum])
         shWeightDict = {} # create dictionary of weights for the stakeholders
         shBeneDict = {} # create dictionary of benefits for the stakeholders
@@ -30,21 +30,21 @@ evalSolutions(solArr, shDict):
             evalFile.write("Stakeholder \"%s\": " %name)
 
             # get weight for current stakeholder
-            print("Assign a weight (1-9) to stakeholder \"%s\"\n(motivation: %s)" %(name, shDict[name]))
-            shWeight = input("Enter weight: ")
+            print("\nAssign a weight (1-9) to stakeholder \"%s\"\n(motivation: %s)" %(name, shDict[name]))
+            shWeight = int(input("Enter weight: "))
             while(shWeight > 9 or shWeight < 1):
                 print("Invalid input. Your input: %d" %shWeight)
-                shWeight = input("Enter weight: ")
+                shWeight = int(input("Enter weight: "))
 
             # add weight associated with name to dict
             shWeightDict[name] = shWeight
 
             # get benefit for current stakeholder
-            print("Assign a benefit (1-9) to stakeholder \"%s\"\n" %name)
-            shBenefit = input("Enter benefit: ")
+            print("Assign a benefit (1-9) to stakeholder \"%s\"" %name)
+            shBenefit = int(input("Enter benefit: "))
             while(shBenefit > 9 or shBenefit < 1):
                 print("Invalid input. Your input: %d" %shBenefit)
-                shBenefit = input("Enter benefit: ")
+                shBenefit = int(input("Enter benefit: "))
 
             # add benefit associated with name to dict
             shBeneDict[name] = shBenefit
@@ -59,6 +59,9 @@ evalSolutions(solArr, shDict):
         solnCumulativeSum = 0
         for name in shTotalDict:
             solnCumulativeSum = solnCumulativeSum + shTotalDict[name]
+
+        # write cumulative total for this solution to the file
+        evalFile.write("Cumulative value for this solution: %d\n\n" %solnCumulativeSum)
 
         #add solution and stakeholders' weights and benefits to the solutions dict
         evalSolutionsDict[solArr[solNum]] = {'weights':shWeightDict, 'benefits':shBeneDict, 'totals':shTotalDict, 'sum': solnCumulativeSum}
@@ -76,3 +79,6 @@ evalSolutions(solArr, shDict):
     print("""At this stage it is recommended to seek additional aid from peers and your respective disciplines ethics code.
     If applicable, it is also recommended to examine case studies similar to your situation.
     Lastly, if you believe that changes to this evaluation are in order after seeking assistance, you may repeat this step with modified weights and benefits if you wish.""")
+
+    # close the file
+    evalFile.close()

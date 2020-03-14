@@ -8,6 +8,7 @@ import os
 from step1 import assembleFact
 from step2and3 import stakeholders
 from step4 import developSolutions
+from step5to7 import evalSolutions
 
 #this method greets user and and ask if they want to create a new checklist orupdate pre-existing one
 #it verifies that users input the right value, and then return the input
@@ -38,6 +39,10 @@ def greeting():
             solArray = developSolutions(problem)
             print("remaining solutions: ")
             print(solArray)
+
+            #steps 5-7: evaluate solutions and pick the initially optimal one
+            evalSolutions(solArray, shDict)
+
 
         #user chooses to update their preexisting checklist. Do part 6 - 8
         elif(userInput == "2"):
