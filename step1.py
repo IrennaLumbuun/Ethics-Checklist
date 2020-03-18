@@ -50,7 +50,7 @@ def assembleFact():
         miscInput = input("Write it here: ")
         factFile.write(miscInput + "\n\n")
     
-    print("\nWe're done with step 1. Continueing with step 2...")
+    print("\nWe're done with step 1. Continuing with step 2...")
     #close file
     factFile.close()
     return problem
@@ -67,7 +67,7 @@ def addScenario(factFile, scenNumber):
     factFile.write(scenario + "\n")
 
     hasPerspective = 1
-    print("\nLets take a look from other perspective to see how bias may emerge")
+    print("\nLets take a look from other perspectives to see how bias may emerge")
     hasPerspective = input("1 - add a perspective\n2 - Skip this step\nEnter your input: ")
     while (hasPerspective != "2"):
         if(hasPerspective != "1"):

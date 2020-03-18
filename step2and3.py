@@ -116,7 +116,7 @@ def addSH(shFile, shNumber, name, shDict):
 
     print("\nGood job! You have identified %s's motivations.")
     print("Their personal motivation is %s, position related motivation is %s, financial motivation is %s, and political motivation is %s" %(pMotiv, posMotiv, finMotiv, polMotiv))
-    mostReasonable = input("""\nOut of these four motivations, pick one that you think is the most reasonable potential motvations?
+    mostReasonable = input("""\nOut of these four motivations, pick one that you think is the most reasonable potential motivation:
     1 - personal motivation
     2 - position related motivation
     3 - financial motivation
@@ -124,7 +124,7 @@ def addSH(shFile, shNumber, name, shDict):
     Enter your input: """)
     try:
         while(int(mostReasonable)< 1 or int(mostReasonable) > 4):
-            print("Invalid input. You inputed '%s'" %(mostReasonable))
+            print("Invalid input. You input '%s'" %(mostReasonable))
             mostReasonable = input("""Out of the four motivations, pick one that you think is the most reasonable potential motvations?
             1 - personal motivation
             2 - position related motivation
@@ -132,7 +132,7 @@ def addSH(shFile, shNumber, name, shDict):
             4 - political motivation
             Enter your input: """)
     except ValueError:
-        print("Invalid input. You inputed '%s'" %(mostReasonable))
+        print("Invalid input. You input '%s'" %(mostReasonable))
         mostReasonable = input("""Out of the four motivations, pick one that you think is the most reasonable potential motvations?
         1 - personal motivation
         2 - position related motivation

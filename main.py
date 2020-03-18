@@ -14,7 +14,7 @@ from step5to7 import evalSolutions
 #it verifies that users input the right value, and then return the input
 def greeting():
     validInput = False
-    print("Welcome to the program!\n1 - Create a new Ethics Checklist\n2 - Update pre-existing checkllist\n3 - quit")
+    print("Welcome to the program!\n1 - Create new problem/solutions set\n2 - Update pre-existing problem/solutions set\n3 - quit")
     userInput = input("Enter your input: ")
 
     while(validInput == False):
@@ -47,7 +47,7 @@ def greeting():
         #user chooses to update their preexisting checklist. Do part 6 - 8
         elif(userInput == "2"):
             validInput = True
-            print("input is 2")
+            print("input is 2\nPlease refer to the files that you wish to edit.")
 
         #user chooses to exit
         elif(userInput == "3"):

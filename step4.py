@@ -24,7 +24,7 @@ def getSolution(solFile):
     solArray=[]
     while(solutionOpt != "2"):
         if(solutionOpt != "1"):
-            print("Invalid input. You inputed '%s'" %solutionOpt)
+            print("Invalid input. You input '%s'" %solutionOpt)
             solutionOpt = input("1 - add solution\n2 - next step\nEnter your input: ")
         solution = input("Potential solution number %d: " %solNum)
         solFile.write("%d. %s\n" %(solNum, solution))
@@ -47,8 +47,9 @@ def analyseSolution(solFile, solArray):
         while(int(eliminate) < 1 or int(eliminate) > solNum):
             print("Invalid input. Your input must be between 1 and %d" %solNum)
             eliminate = input("Enter the index of the potential solution that you want to eliminate: ")
-        
+
         deleted = solArray.pop(int(eliminate) - 1)
+        solNum = len(solArray)
         solFile.write("%d. %s\n" %(int(eliminate), deleted))
 
         reason = input("Why do you choose to eliminate that potential solution?\nEnter your answer: ")
